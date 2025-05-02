@@ -11,8 +11,8 @@ Follow the instructions below to set up your environment and start working with 
 To clone this repository to your local machine, open a terminal or Git command console and run:
 
 ```bash
-git clone https://github.com/Angi-1401/iupsm-py-classroom.git
-cd iupsm-py-classroom
+git clone https://github.com/Angi-1401/psm-py-classroom.git
+cd psm-py-classroom
 ```
 
 ### 2. Install Python
@@ -34,6 +34,7 @@ python --version
 1. Download and install VS Code from [the official VS Code website](https://code.visualstudio.com).
 
 2. Open VS Code and install the following extensions:
+
 - Python: https://marketplace.visualstudio.com/items?itemName=ms-python.python
 
 ### 4. Set Up a Virtual Environment (Optional but Recommended)
@@ -47,7 +48,8 @@ python -m venv venv
 ```
 
 3. Activate the virtual environment:
- ```bash
+
+```bash
 venv\Scripts\activate
 ```
 
