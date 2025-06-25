@@ -50,11 +50,12 @@ for index, person in persons.iterrows():
 
 
 persons["total_relatives"] = (
-    (~persons["mom_id"].isna()).astype(int)
-    + (~persons["dad_id"].isna()).astype(int)
+    persons["mom_id"].notna().astype(int)
+    + persons["dad_id"].notna().astype(int)
     + persons["siblings"].apply(len)
     + persons["children"].apply(len)
 )
+
 
 persons["relatives_iq"] = (
     (

@@ -1,12 +1,10 @@
-# You own a national restaurant chain called Applewasps. To increase sales, you decide to launch a multi-regional television marketing campaign.
-# At the end of the campaign you have a table of commercials indicating when and where each commercial aired, and a table of sales indicating when and where customers generated sales.
-
 import numpy as np
 import pandas as pd
 
 generator = np.random.default_rng(5555)
 regions = ["north", "south", "east", "west"]
 
+# Generate sample commercials
 commercials = pd.DataFrame(
     {
         "commercial_id": range(10),
@@ -16,6 +14,7 @@ commercials = pd.DataFrame(
     }
 )
 
+# Generate sample sales
 sales = pd.DataFrame(
     {
         "sale_id": range(10),
@@ -26,15 +25,22 @@ sales = pd.DataFrame(
     }
 )
 
+print("Commercials:")
 print(commercials)
+print("\nSales:")
 print(sales)
 
-# In order to analyze the performance of each commercial, map each sale to the commercial that aired prior to the sale, in the same region.
+# Map each sale to the most recent commercial in the same region before the sale
+sales_sorted = sales.sort_values("date_time")
+commercials_sorted = commercials.sort_values("date_time")
 
-commercials = commercials.sort_values("date_time")
-sales = sales.sort_values("date_time")
-
-merged_data = pd.merge_asof(
-    left=commercials, right=sales, on="date_time", by="region", direction="backward"
+sales_with_commercials = pd.merge_asof(
+    left=sales_sorted,
+    right=commercials_sorted,
+    on="date_time",
+    by="region",
+    direction="backward",
 )
-print(merged_data)
+
+print("\nSales with matched commercials:")
+print(sales_with_commercials)
